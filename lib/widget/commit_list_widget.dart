@@ -1,5 +1,7 @@
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import '../models/github_commit_model.dart';
+
 
 class CommitListWidget extends StatelessWidget {
   CommitListWidget(this.commit);
@@ -28,7 +30,7 @@ class CommitListWidget extends StatelessWidget {
                     '${commitModel.commit.message}',
                     textAlign: centerText,
                   ),
-                  Text('${commitModel.author.dateTime}'),
+                  Text(DateFormat.yMd().add_jm().format(commitModel.author.dateTime)),
                 ],
               ),
             ),
