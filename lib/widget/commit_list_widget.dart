@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:github_test_app/models/github_commit_model.dart';
+import '../models/github_commit_model.dart';
 
 
 class CommitListWidget extends StatelessWidget {
+  CommitListWidget(this.commit);
   final List<CommitModel> commit;
-  CommitListWidget({this.commit});
-
-
+ 
   @override
   Widget build(BuildContext context) {
 
@@ -16,7 +15,7 @@ class CommitListWidget extends StatelessWidget {
           final CommitModel commitModel = commit.elementAt(index);
           return Card(
             child: ListTile(
-              leading: Text('${commitModel.author.name}'),
+              leading: Text('${commitModel.commit.author}'),
               title: Text('${commitModel.commit.message}'),
             ),
           );
