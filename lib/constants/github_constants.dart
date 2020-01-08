@@ -5,6 +5,5 @@ mixin GithubConstants {
   static String repo = 'github_test_app';
 
   static String getUser = '$baseGithubUrl/users/$user';
-  static String getUserRepos = '$baseGithubUrl/users/$user/repos';
   static String getUserCommits = '$baseGithubUrl/repos/$user/$repo/commits';
 }
