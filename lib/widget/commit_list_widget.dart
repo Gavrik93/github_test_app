@@ -4,6 +4,7 @@ import '../models/github_commit_model.dart';
 class CommitListWidget extends StatelessWidget {
   CommitListWidget(this.commit);
   final List<CommitModel> commit;
+  final centerText = TextAlign.center;
 
   @override
   Widget build(BuildContext context) {
@@ -13,8 +14,14 @@ class CommitListWidget extends StatelessWidget {
           final CommitModel commitModel = commit.elementAt(index);
           return Card(
             child: ListTile(
-              leading: Text('${commitModel.author.name}'),
-              title: Text('${commitModel.commit.message}'),
+              leading: Text(
+                'Author: \n ${commitModel.author.name}',
+                textAlign: centerText,
+              ),
+              title: Text(
+                '${commitModel.commit.message}',
+                textAlign: centerText,
+              ),
             ),
           );
         });

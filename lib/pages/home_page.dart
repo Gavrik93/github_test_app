@@ -17,8 +17,10 @@ class _HomePageState extends State<HomePage> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.refresh),
-            onPressed: () {
+            onPressed: () { setState(() {
               GithubResponse().fetchCommits();
+            });
+              
             },
           ),
         ],
