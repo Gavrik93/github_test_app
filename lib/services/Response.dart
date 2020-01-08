@@ -17,7 +17,6 @@ class GithubResponse {
 
         List<CommitModel> commit =
             json.map((commit) => CommitModel.fromJson(commit)).toList();
-        print('commits length = ${commit.length}');
         return commit;
       } else {
         throw Exception('Error fetching github commits');

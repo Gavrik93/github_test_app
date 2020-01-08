@@ -14,13 +14,22 @@ class CommitListWidget extends StatelessWidget {
           final CommitModel commitModel = commit.elementAt(index);
           return Card(
             child: ListTile(
-              leading: Text(
-                'Author: \n ${commitModel.author.name}',
-                textAlign: centerText,
+              leading: Container(
+                height: 35,
+                width: 125,
+                child: Text(
+                  'Author: \n ${commitModel.author.name}',
+                  textAlign: centerText,
+                ),
               ),
-              title: Text(
-                '${commitModel.commit.message}',
-                textAlign: centerText,
+              title: Column(
+                children: <Widget>[
+                  Text(
+                    '${commitModel.commit.message}',
+                    textAlign: centerText,
+                  ),
+                  Text('${commitModel.author.dateTime}'),
+                ],
               ),
             ),
           );
