@@ -9,6 +9,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  Future<List<CommitModel>> data;
+  @override
+  void initState(){
+    super.initState();
+    data = GithubResponse().fetchCommits();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +26,7 @@ class _HomePageState extends State<HomePage> {
           IconButton(
             icon: Icon(Icons.refresh),
             onPressed: () { setState(() {
-              GithubResponse().fetchCommits();
+              data = GithubResponse().fetchCommits();
             });
               
             },
@@ -26,7 +34,7 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: FutureBuilder<List<CommitModel>>(
-        future: GithubResponse().fetchCommits(),
+        future: data,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return CommitListWidget(snapshot.data);
