@@ -28,21 +28,22 @@ class _HomePageState extends State<HomePage> {
             onPressed: () { setState(() {
               data = GithubResponse().fetchCommits();
             });
-              
             },
           ),
         ],
       ),
-      body: FutureBuilder<List<CommitModel>>(
-        future: data,
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return CommitListWidget(snapshot.data);
-          } else if (snapshot.hasError) {
+      body: Center(
+              child: FutureBuilder<List<CommitModel>>(
+          future: data,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return CommitListWidget(snapshot.data);
+            } else if (snapshot.hasError) {
+              return CircularProgressIndicator();
+            }
             return Text('${snapshot.error}');
-          }
-          return CircularProgressIndicator();
-        },
+          },
+        ),
       ),
     );
   }
