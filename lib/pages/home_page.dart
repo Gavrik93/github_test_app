@@ -9,10 +9,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   Future<List<CommitModel>> data;
   @override
-  void initState(){
+  void initState() {
     super.initState();
     data = GithubResponse().fetchCommits();
   }
@@ -25,15 +24,16 @@ class _HomePageState extends State<HomePage> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.refresh),
-            onPressed: () { setState(() {
-              data = GithubResponse().fetchCommits();
-            });
+            onPressed: () {
+              setState(() {
+                data = GithubResponse().fetchCommits();
+              });
             },
           ),
         ],
       ),
       body: Center(
-              child: FutureBuilder<List<CommitModel>>(
+        child: FutureBuilder<List<CommitModel>>(
           future: data,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
             } else if (snapshot.hasError) {
               return CircularProgressIndicator();
             }
-            return Text('${snapshot.error}');
+            return CircularProgressIndicator();
           },
         ),
       ),
